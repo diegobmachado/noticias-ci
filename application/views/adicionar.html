@@ -1,0 +1,62 @@
+<!--
+	{if isset($erro)}
+		<p>{$erro}</p>
+	{/if}
+				<td><label for="">Título</label></td>
+				<td><input type="text" name="titulo"></td>
+			</tr>
+			<tr>
+				<td><label for="">Corpo</label></td>
+				<td><textarea name="corpo"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="">Imagem</label></td>
+				<td><input type="file" name="image"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Adicionar"></td>
+				<td><a href="javascript(history.back());">Cancelar</a></td>
+			</tr>
+-->
+<div class="container">
+	<div class="page-header">
+		<h1>Notícias</h1>
+	</div>
+	<ol class="breadcrumb">
+		<li><a href="{base_url}">Home</a></li>
+        <li><a href="{base_url}noticias">Notícias</a></li>
+		<li class="active">Adicionar</li>
+	</ol>
+    {if isset($erro)}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {$erro}
+        </div>
+    {/if}
+    <form class="form-horizontal" role="form" name="form_adicionar" enctype="multipart/form-data" method="post" action="{base_url}noticias/adicionar_noticia">
+        <div class="form-group">
+            <label for="f_titulo" class="col-sm-2 control-label">Título</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="f_titulo" name="titulo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="f_corpo" class="col-sm-2 control-label">Corpo</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="f_corpo" name="corpo" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="f_corpo" class="col-sm-2 control-label">Imagem</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control" id="f_imagem" name="imagem">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Adicionar</button>
+                <a href="{base_url}noticias" class="btn btn-danger" role="button">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>

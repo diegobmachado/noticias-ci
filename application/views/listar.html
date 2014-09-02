@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="page-header">
+		<h1>Notícias</h1>
+	</div>
+	<ol class="breadcrumb">
+		<li><a href="{base_url}">Home</a></li>
+		<li class="active">Notícias</li>
+	</ol>
+    {if isset($erro)}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {$erro}
+        </div>
+    {/if}
+    {if isset($msg)}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {$msg}
+        </div>
+    {/if}
+	<a class="btn btn-success" href="{base_url}noticias/adicionar" role="button">Adicionar</a>
+	<div class="dropdown pull-right">
+		<button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+			Ordenar por
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			{if $ordem == 'desc'}
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="{base_url}noticias/titulo-asc">Título</a>
+				</li>
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="{base_url}noticias/data-asc">Data</a>
+				</li>
+			{else}
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="{base_url}noticias/titulo-desc">Título</a>
+				</li>
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="{base_url}noticias/data-desc">Data</a>
+				</li>
+			{/if}
+		</ul>
+	</div>
+	<div class="clearfix">&nbsp;</div>
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Data</th>
+			<th>Título</th>
+			<th>Operações</th>
+		</tr>
+		{foreach $noticias as $n}
+			<tr>
+				<td>{$n->data_br}</td>
+				<td>{$n->titulo}</td>
+				<td>
+					<a class="btn btn-default btn-sm" href="{base_url}noticias/ler/{$n->id}" role="button">Visualizar</a>
+                    <a class="btn btn-info btn-sm" href="{base_url}noticias/editar/{$n->id}" role="button">Editar</a>
+					<a class="btn btn-danger btn-sm" href="{base_url}noticias/remover/{$n->id}" role="button">Remover</a>
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+	<a class="btn btn-success" href="{base_url}noticias/adicionar" role="button">Adicionar</a>
+</div>
