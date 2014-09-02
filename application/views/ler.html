@@ -13,10 +13,14 @@
             {$erro}
         </div>
     {/if}
-    <h2>{$dados->titulo}</h2>
+    <blockquote>
+    	<h2>{$dados->titulo}</h2>
+    </blockquote>
     {if $dados->imagem != ''}
-    	<img src="{base_url}uploads/imagens/{$dados->imagem}" alt="" width="100%" height="50%" class="img_responsive">
+    	<img src="{base_url}uploads/imagens/{$dados->imagem}" alt="" width="100%" height="360px" class="img_responsive">
         <div class="clearfix">&nbsp;</div>
     {/if}
-    {$dados->corpo}
+    <article style="margin-bottom:30px">
+    	{$dados->corpo}
+    </article>
 </div>

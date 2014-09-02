@@ -40,7 +40,7 @@ class M_noticias extends CI_Model {
 		$this->db->select('DATE_FORMAT(data, "%d/%m/%Y") AS data_br', false);
 		$this->db->where('id', $id);
 		$query = $this->db->get('noticias_ag2');
-		return ($query->num_rows() != 0) ? $query->row() : false();
+		return ($query->num_rows() != 0) ? $query->row() : false;
 	}
 	
 	function editar($dados, $id)
